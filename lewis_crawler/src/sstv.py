@@ -81,6 +81,12 @@ def prepare_robot36():
     return slowscan_message
 
 if __name__ == "__main__":
+    try:
+        os.makedirs('lewis_crawler/working')
+    except OSError as e:
+        if e.errno != errno.EEXIST:
+            raise
+
     # Take photograph. 
     take_photo() # Saves a photograph to the working/working.jpg location
 
@@ -88,17 +94,17 @@ if __name__ == "__main__":
     slowscan = prepare_robot36() # Quick n dirty
     #slowscan = prepare_martin1() # Much slower, but cleaner picture
 
-
-    try:
-        os.makedirs('lewis_crawler/working')
-    except OSError as e:
-        if e.errno != errno.EEXIST:
-            raise
     slowscan.write_wav('lewis_crawler/working/working.wav')
 
     #sstv('working/working.png', 'working/radio.wav', mode='Robot36')
 
 def do_test():
+    try:
+        os.makedirs('lewis_crawler/working')
+    except OSError as e:
+        if e.errno != errno.EEXIST:
+            raise
+
     # Take photograph. 
     take_photo() # Saves a photograph to the working/working.jpg location
 
@@ -106,12 +112,6 @@ def do_test():
     slowscan = prepare_robot36() # Quick n dirty
     #slowscan = prepare_martin1() # Much slower, but cleaner picture
 
-
-    try:
-        os.makedirs('lewis_crawler/working')
-    except OSError as e:
-        if e.errno != errno.EEXIST:
-            raise
     slowscan.write_wav('lewis_crawler/working/working.wav')
 
     #sstv('working/working.png', 'working/radio.wav', mode='Robot36')
