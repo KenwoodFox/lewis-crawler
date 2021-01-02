@@ -14,13 +14,13 @@ def take_photo():
     # Take the photo, and put the mast down.
 
     # Copy in the test pattern png (if photo process errors out, this will be used instead)
-    copyfile('lewis_crawler/templates/TEST_PATTERN.jpg', 'lewis_crawler/templates/working.jpg')
+    copyfile('lewis_crawler/templates/TEST_PATTERN.jpg', 'lewis_crawler/working/working.jpg')
 
     # Software to take the photo should be here
-    copyfile('lewis_crawler/templates/TEST_PATTERN.jpg', 'lewis_crawler/templates/working.jpg')
+    copyfile('lewis_crawler/templates/TEST_PATTERN.jpg', 'lewis_crawler/working/working.jpg')
 
 def prepare_martin1():
-    raw_img = Image.open("lewis_crawler/templates/working.jpg") # Open the current working image
+    raw_img = Image.open("lewis_crawler/working/working.jpg") # Open the current working image
     img = raw_img.resize((320, 256), Image.ANTIALIAS) # resize it for the Martin M1
 
     if False:
@@ -42,13 +42,13 @@ def prepare_martin1():
     img = img.convert("RGBA")
     img = Image.alpha_composite(img, overlay)
     img = img.convert("RGB")
-    img.save('lewis_crawler/templates/TEST_PATTERN.jpg') # Save the working image
+    img.save('lewis_crawler/working/working.jpg') # Save the working image
 
     slowscan_message = color.MartinM1(img, 48000, 16) # Image, rate, bits
     return slowscan_message
 
 def prepare_robot36():
-    raw_img = Image.open("lewis_crawler/templates/TEST_PATTERN.jpg") # Open the current working image
+    raw_img = Image.open("lewis_crawler/working/working.jpg") # Open the current working image
     img = raw_img.resize((320, 240), Image.ANTIALIAS) # resize it for robot36
 
     if False:
@@ -76,7 +76,7 @@ def prepare_robot36():
     img = img.convert("RGBA")
     img = Image.alpha_composite(img, overlay)
     img = img.convert("RGB")
-    img.save('lewis_crawler/templates/TEST_PATTERN.jpg') # Save the working image
+    img.save('lewis_crawler/working/working.jpg') # Save the working image
     slowscan_message = color.Robot36(img, 48000, 16) # Image, rate, bits
     return slowscan_message
 

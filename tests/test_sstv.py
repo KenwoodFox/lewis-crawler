@@ -6,7 +6,7 @@ class TestExample(unittest.TestCase):
 
     def test_math(self):
         sstv.do_test() # Do the test
-        assert os.path.exists('lewis_crawler\working\working.wav')
+        assert os.path.exists('lewis_crawler/working/working.wav')
 
 
 if __name__ == '__main__':
